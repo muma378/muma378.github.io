@@ -1,7 +1,5 @@
 ---
-title: My GitHub Pages Notebook!
+title: XY Feed Zorro Blog
 ---
 
-Hello world!
 
-Write some words here!

@@ -24,7 +24,7 @@
 
 上面那张图是JVM的内存管理模型，下面则是 Linux 进程的，本质上都是为了管理内存而进行的抽象，只是维度不同。
 
-简而言之，对于 JVM，**Non-Heap** 这部分主要是存储元数据和代码结构体、方法，这部分区域大小比较固定，不太会成为 OOM 的元凶。而 **Heap** 用来存储Java程序创建的对象，直到对象被释放才会被GC回收占用的这部分内存，自然会随着应用服务的负载变化而而变化，也是我们需要关注的重点。更多关于这两部分的解释可以参考 [Java Memory](https://www.baeldung.com/java-memory-beyond-heap) 。
+简而言之，对于 JVM，**Non-Heap** 这部分主要是存储元数据和代码结构体、方法，这部分区域大小比较固定，不太会成为 OOM 的元凶。而 **Heap** 用来存储Java程序创建的对象，直到对象被释放才会被GC回收占用的这部分内存，自然会随着应用服务的负载变化而变化，也是我们需要关注的重点。更多关于这两部分的解释可以参考 [Java Memory](https://www.baeldung.com/java-memory-beyond-heap) 。
 
 程序出现 OOM 的本质是由于运行需要更多内存，但是可分配的内存已经不够了——无论是由于 Heap 的增长超过了预先指定的大小（比如通过 -Xms4G 指定最大可用4G但实际上应用创建对象超过了4G），还是应用总的内存大小超过了机器或容器本身的内存限制（比如容器指定 memory limit 4G，Non-Heap 占用了500M，Heap 即使没有超过指定的大小也会导致 OOM，只不过这个 OOM 不是 JVM 而是 Kubelet 或者内核触发的）， [这篇文章](https://danoncoding.com/tricky-kubernetes-memory-management-for-java-applications-d2f88dd4e9f6) 有一个生动的例子帮助我们理解 OOM 产生的过程。
 
@@ -139,13 +139,14 @@ JVM 提供了[多种垃圾收集器的实现](https://docs.oracle.com/en/java/ja
 | **G1 (Garbage First)**          | 区域式+并发  | 小停顿，可配置最大停顿时间   | 大堆（>4GB）     | 中高  | 大型应用，需要稳定响应时间   | JDK9+默认                                                                          |
 | **Shenandoah**                  | 并发+低延迟  | 停顿极短（1-10ms）    | 大堆（GB～TB）    | 中   | 极端低延迟应用，如金融交易系统 | Red Hat 支持，JDK17+正式版，[部分LTS版本](https://wiki.openjdk.org/display/shenandoah/Main) |
 | **ZGC**                         | 并发+超低延迟 | 停顿极短（<1ms）      | 巨大堆（几十GB～TB） | 中   | 超大堆，要求极低延迟系统    | Oracle 主导，JDK11+                                                                 |
+
 结论是大部分现代应用的场景使用 G1GC 就足够应付。如果需要针对应用进行更细致的参数调优可以参考[这篇](https://docs.oracle.com/en/java/javase/17/gctuning/factors-affecting-garbage-collection-performance.html)。
 
 ### 指标
 
 在第一次对 JVM 参数进行压测和调优的时候掉入过一个误区：有同事观察到 Jenkins 的内存一直维持在比较高的水位线，没有预想的随着请求下降而释放和回收内存。
 
-![[source/content/images/jvm-in-container/jenkins-memory-usage.png]]
+![[jenkins-memory-usage.png]]
 
 这是因为观测的指标是容器的内存用量，而这一指标体现的实际上是 JVM 声明的堆内存+非堆内存的大小之和，并非真实的用量。如上面所说，只有在满足一定条件后 JVM 才会向操作系统释放和申请内存空间，才能在指标中看到内存大小的调整。
 
@@ -167,7 +168,7 @@ JVM 提供了[多种垃圾收集器的实现](https://docs.oracle.com/en/java/ja
 | `-XX:ActiveProcessorCount` | n/a                      | CPU count that the VM should use and report as active                                              | n/a               |
 来源：[developers.redhat.com](https://developers.redhat.com/articles/2022/04/19/java-17-whats-new-openjdks-container-awareness#opinionated_configuration)
 
-是的，你没看错，**最小堆默认值比最大堆默认值大**，所以这两个值最好要显式指定。此外 JVM 不考虑 requests 也会容易引发一个问题。
+是的，你没看错，**最小堆默认值比最大堆默认值还大**，所以这两个值最好要显式指定。此外 JVM 不考虑 requests 也会容易引发一个问题。
 
 ### 潜在问题
 
@@ -272,7 +273,7 @@ VM 通过页表（Page Table）来实现虚拟地址到物理地址的转换，�
 
 最后我们来讨论下，page cache 是否真的“安全”，不值得我们担心会导致应用OOM？
 
-假设一种极端情况，短时间内 Jenkins 接收到了大量的大文件，但是磁盘IO的性能又跟不上，导致大量脏页产生，Page Cache 在内存中的占比不断提高。这个时候当程序需要申请匿名内存时，这时会触发 Direct Reclaim ，让应用程序等待，直到内核成功回收足够的内存。但是假如由于严重的磁盘故障或者是 NFS网络问题，内核始终无法回收时，便会触发 OOM。
+假设一种极端情况，短时间内 Jenkins 接收到了大量的大文件，但是磁盘IO的性能又跟不上，导致大量脏页产生，Page Cache 在内存中的占比不断提高。当程序需要申请匿名内存时，便会触发 Direct Reclaim ，让应用程序等待，直到内核成功回收足够的内存。但是假如由于严重的磁盘故障或者是 NFS网络问题，内核始终无法回收时，便会触发 OOM。
 
 总的来说，Page Cache过高不会导致进程被OOM，上面这种场景一般通过监控 Buffers，Dirty Pages 或者是 IO wait 也能提前发现，这里 ChatGPT 整理了一张表，我感觉挺完整的：
 
@@ -305,10 +306,10 @@ sysctl -w vm.vfs_cache_pressure=200
 ```
 
 
-### 加餐：内核如何回收内存
+### 加餐：内存回收流程
 
 1. 程序在申请新的内存（如 `malloc(1GB)`）。
-2. 内核发现：当前空闲页框（Free Pages）不足，没法直接满足。
+2. 内核发现：当前空闲页（Free Pages）不足，没法直接满足。
 3. 内核就**直接在申请内存的那个进程上下文里**，开始做“回收”工作（reclaim）：
     - 回收 LRU 页（最近最少使用的内存页）；
     - 把脏页（dirty page）flush到磁盘；
@@ -323,11 +324,9 @@ sysctl -w vm.vfs_cache_pressure=200
 
 #### 为什么叫 "Direct Reclaim"？
 
-因为：
-- 是**直接**在申请内存的进程里执行 reclaim 操作。
-- 不是系统后台（kswapd）慢慢异步做。而是"你想要内存，我内核直接让你等一下，我现在马上去找内存回来"。
+因为是**直接**在申请内存的进程里执行 reclaim 操作，不是系统后台（kswapd）慢慢异步做。而是"你想要内存，我内核直接让你等一下，我现在马上去找内存回来"。
 
-（所以 Direct Reclaim 期间，进程实际上是**阻塞（blocked）**的）
+所以 Direct Reclaim 期间，进程实际上是 **阻塞（blocked）** 的。 
 
 #### 补充细节
 
@@ -340,7 +339,7 @@ sysctl -w vm.vfs_cache_pressure=200
 
 # 思考
 
-这篇文章展示的内容不是一个短期的集中的过程，断断续续持续了一年，因为最近的一次业务问题而深度思考和研究了一把，结合之前的一些发现一起整理出来。最后我想说：
+这篇文章展示的内容不是一个短期的集中的过程，断断续续持续了一年，因为最近的一次业务问题才深度思考和研究了一把，结合之前的一些发现一起整理出来。最后我想说：
 1. 内存问题是一个系统性的问题，从应用程序到运行时到操作系统内核，再到云编排平台，每个环节都可能会导致服务工作不如预期；
 2. 可观测性是我们最大的帮手，而利用这些指标的前提是对系统充分的理解；
 3. 多输入，多输出，不会就问AI；

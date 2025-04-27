@@ -15,18 +15,18 @@
 1. 在存放源代码的 repo A中准备 chart 构建的文件夹，一般是 /chart 目录；
 2. 创建另一个 github项目，专门用来存放构建的chart制品和index.yaml，一般**项目名**就叫 `charts`；
 3. 由于需要在 repo A 的github action中往另一个项目里推送代码，为了更加安全地使用，需要创建一个 GitHub App，并使用该 app 来获取仓库的token。在右上角 Settings - Third-party Access /Github Apps -  New Github App；
-![[new github app.jpg]]
+	![[new github app.jpg]]
 
-1. 设置基本信息Homepage URL 为 charts的github page地址，并生成一个`private key`，复制下来，待会会用到。设置权限可以访问 repo charts；
+4. 设置基本信息Homepage URL 为 charts的github page地址，并生成一个`private key`，复制下来，待会会用到。设置权限可以访问 repo charts；
 
-![[repository access.jpg]]
-![[homepage  url.jpg]]
+	![[repository access.jpg]]
+	![[homepage  url.jpg]]
 
-1. 在源码的repo的项目中，在 `Secrets and variables` 里添加 APP_ID 和 APP_PRIVATE_KEY。APP_ID可以在github app的页面找到，private key 就是刚才复制的key；
-![[repository variables.jpg]]
-1. 在github actions workflow 中加上如下的代码，使用 action [create-github-app-token](https://github.com/actions/create-github-app-token) 获取token
+5. 在源码的repo的项目中，在 `Secrets and variables` 里添加 APP_ID 和 APP_PRIVATE_KEY。APP_ID可以在github app的页面找到，private key 就是刚才复制的key；
+	![[repository variables.jpg]]
+6. 在github actions workflow 中加上如下的代码，使用 action [create-github-app-token](https://github.com/actions/create-github-app-token) 获取token
 
-```
+```yaml
   publish-chart:
     if: startsWith(github.ref, 'refs/tags/v')
     env:
@@ -75,8 +75,8 @@
           git push https://x-access-token:${{ steps.get_app_token.outputs.token }}@github.com/amamba-io/charts.git
 ```
 
-1. 配置 repo charts ，在 Pages 页面选择source为 `Deploy from a branch` 并且选择 Branch 为 main 和 /docs 目录
-![[github pages source.png]]
+7. 配置 repo charts ，在 Pages 页面选择source为 `Deploy from a branch` 并且选择 Branch 为 main 和 /docs 目录
+	![[github pages source.png]]
 
 ## How to use
 

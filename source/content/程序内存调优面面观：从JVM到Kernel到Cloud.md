@@ -1,3 +1,11 @@
+---
+title: 程序内存调优面面观：从JVM到Kernel到Cloud
+tags:
+  - kernel
+  - memory
+  - JVM
+date: 2025/4/28
+---
 # 背景
 
 我们在 kubernetes 的环境中部署了容器化的 Jenkins，部署之初经常会出现OOM，经过一些调研和调整后，逐渐稳定起来。这个时候，又有同事发现Jenkins的内存用量一直在增长......
@@ -355,3 +363,5 @@ sysctl -w vm.vfs_cache_pressure=200
 - [How much is too much? The Linux OOMKiller and “used” memory](https://faun.pub/how-much-is-too-much-the-linux-oomkiller-and-used-memory-d32186f29c9d)
 - [深入理解 Page Cache](https://mazhen.tech/p/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-page-cache/)
 - [The /proc/meminfo File in Linux](https://www.baeldung.com/linux/proc-meminfo)
+
+[^1]: abcasa

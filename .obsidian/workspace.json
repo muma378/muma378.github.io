@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "程序内存调优面面观：从JVM到Kernel到Cloud"
             }
+          },
+          {
+            "id": "fa5f80652e48b0d0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/content/读书/工人阶级子弟为何继承父业.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "工人阶级子弟为何继承父业"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -175,15 +190,27 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "fit:Fit Sync": false,
       "copilot:Open Copilot Chat": false,
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "671dd36ff483630a",
+  "active": "fa5f80652e48b0d0",
   "lastOpenFiles": [
-    "source/content/在 Kubernetes 中运行 Java 应用.md",
     "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
+    "source/content/读书/工人阶级子弟为何继承父业.md",
+    "source/content/tricks/index.md",
+    "source/content/index.md",
+    "source/content/读书/index.md",
+    "source/content/读书",
+    "source/content/images/未命名",
+    "source/content/images/jvm-in-container/container-memory-usage3.png",
+    "source/content/images/jvm-in-container/java-memory-model.png",
+    "source/content/images/jvm-in-container/jenkins-memory-usage.png",
+    "source/content/images/jvm-in-container/jvm-memory-model.png",
+    "source/content/images/jvm-in-container/linux-process-memory-model.png",
+    "source/content/images/jvm-in-container/memory-wss2.png",
+    "source/content/images/jvm-in-container/memory-wss.png",
+    "source/content/在 Kubernetes 中运行 Java 应用.md",
     "_fit/source/docs/setting up your GitHub repository.md",
     "_fit/README.md",
     "source/README.md",
@@ -194,20 +221,11 @@
     "_fit/source/content/tricks/把Github Pages当作Chart Museum.md",
     "_fit/source/content/tricks",
     "Pasted image 20250427133317.png",
-    "source/content/images/jvm-in-container/memory-wss2.png",
-    "source/content/images/jvm-in-container/memory-wss.png",
     "source/content/images/jvm-in-container/memory-under-pressure.png",
-    "source/content/images/jvm-in-container/container-memory-usage3.png",
-    "source/content/images/jvm-in-container/container-memory-usage3.png",
     "source/content/images/jvm-in-container/container-memory-usage2.png",
-    "source/content/images/jvm-in-container/container-memory-usage1.png",
-    "Pasted image 20250427180044.png",
-    "Pasted image 20250427151003.png",
     "source/content/tricks/把Github Pages当作Chart Museum.md",
-    "source/content/tricks/index.md",
     "source/content/images/jvm-in-container",
     "_fit/source/content/index.md",
-    "source/content/index.md",
     "source/content/category-folder/index.md",
     "source/content/category-folder/Some note.md",
     "source/content/category-folder",
@@ -218,7 +236,6 @@
     "_fit/source",
     "_fit",
     "source/content/images/serve-charts-with-github",
-    "source/content/images",
     "source/docs/setting up your GitHub repository.md",
     "source/docs/advanced/paths.md",
     "source/docs/advanced/making plugins.md",

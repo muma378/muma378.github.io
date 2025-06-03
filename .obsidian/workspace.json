@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/content/读书/工人阶级子弟为何继承父业.md",
+                "file": "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "工人阶级子弟为何继承父业"
+              "title": "程序内存调优面面观：从JVM到Kernel到Cloud"
             }
           }
         ],
@@ -196,6 +196,7 @@
   },
   "active": "fa5f80652e48b0d0",
   "lastOpenFiles": [
+    "source/content/tricks/在Github上运行Chart Museum.md",
     "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
     "source/content/读书/工人阶级子弟为何继承父业.md",
     "source/content/tricks/index.md",
@@ -223,7 +224,6 @@
     "Pasted image 20250427133317.png",
     "source/content/images/jvm-in-container/memory-under-pressure.png",
     "source/content/images/jvm-in-container/container-memory-usage2.png",
-    "source/content/tricks/把Github Pages当作Chart Museum.md",
     "source/content/images/jvm-in-container",
     "_fit/source/content/index.md",
     "source/content/category-folder/index.md",

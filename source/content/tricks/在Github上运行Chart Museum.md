@@ -1,3 +1,12 @@
+---
+title: 把Github Pages当作Chart Museum
+tags:
+  - github
+  - Chart
+  - devops
+  - trick
+date: 2025/2/23
+---
 # 原理
 
 一般我们使用[chartmuseum](https://chartmuseum.com/) 或者 [harbor](https://goharbor.io/docs/1.10/working-with-projects/working-with-images/managing-helm-charts/) 来存放和拉取helm chart的制品。

@@ -13,26 +13,40 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
+                "file": "source/content/3b1b 直观解释注意力机制笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "程序内存调优面面观：从JVM到Kernel到Cloud"
+              "title": "3b1b 直观解释注意力机制笔记"
             }
           },
           {
-            "id": "fa5f80652e48b0d0",
+            "id": "81508fb3cc9bc8c8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
+                "file": "source/content/深入理解KVCache.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "程序内存调优面面观：从JVM到Kernel到Cloud"
+              "title": "深入理解KVCache"
+            }
+          },
+          {
+            "id": "fe75040a1ad310a1",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://lilianweng.github.io/posts/2018-06-24-attention/#full-architecture",
+                "title": "Attention? Attention! | Lil'Log",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Attention? Attention! | Lil'Log"
             }
           },
           {
@@ -50,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -142,11 +156,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/content/深入理解KVCache.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "深入理解KVCache 的出链列表"
             }
           },
           {
@@ -170,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
+                "file": "source/content/深入理解KVCache.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "程序内存调优面面观：从JVM到Kernel到Cloud 的大纲"
+              "title": "深入理解KVCache 的大纲"
             }
           },
           {
@@ -190,7 +205,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -208,21 +223,27 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "f2572edeae8bddf1",
+  "active": "81508fb3cc9bc8c8",
   "lastOpenFiles": [
-    "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
     "source/content/3b1b 直观解释注意力机制笔记.md",
+    "source/content/深入理解KVCache.md",
+    "source/content/images/kvcache/kvcache-explained.gif.crdownload",
+    "source/content/images/kvcache/kvcache-explained.gif",
+    "source/content/images/kvcache",
+    "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
+    "source/content/images/transformer/transformer.png",
+    "_fit/README.md",
+    "templates/notebook.md",
+    "templates",
     "source/content/images/transformer/3b1b_low-rank.png",
     "source/content/images/transformer/transformer-architecture.png",
     "source/content/images/transformer/3b1b_why-multiply-query-key.png",
-    "source/content/images/transformer/3b1b_value-matrix-update-embeding.png",
+    "source/content/images/transformer/3b1b_value-matrix-update-embedding.png",
     "source/content/images/transformer/3b1b_multi-headed-value.png",
     "source/content/images/transformer/3b1b_attention-pattern.png",
     "source/content/images/transformer",
     "source/content/images/artifacts/transformer-architecture.png",
     "source/content/images/artifacts/3b1b_why-multiply-query-key.png",
-    "source/content/images/artifacts/3b1b_value-matrix-update-embeding.png",
-    "source/content/images/artifacts/3b1b_multi-headed-value.png",
     "source/content/images/artifacts",
     "source/content/tricks/在Github上运行Chart Museum.md",
     "source/content/读书/工人阶级子弟为何继承父业.md",
@@ -233,7 +254,6 @@
     "source/content/images/未命名",
     "source/content/在 Kubernetes 中运行 Java 应用.md",
     "_fit/source/docs/setting up your GitHub repository.md",
-    "_fit/README.md",
     "source/README.md",
     "source/CODE_OF_CONDUCT.md",
     "source/docs/hosting.md",
@@ -248,12 +268,7 @@
     "source/content/category-folder",
     "_fit/source/docs/build.md",
     "_fit/source/docs/authoring content.md",
-    "_fit/source/content",
-    "_fit/source/docs",
-    "_fit/source",
     "source/docs/setting up your GitHub repository.md",
-    "source/docs/advanced/paths.md",
-    "source/docs/advanced/making plugins.md",
-    "source/docs/advanced/index.md"
+    "source/docs/advanced/paths.md"
   ]
 }

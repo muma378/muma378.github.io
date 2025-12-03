@@ -69,14 +69,15 @@ Transformer 的 decoder 过程就是对 $X_t = \{\overrightarrow{E_1}, \overrigh
 我们前面分析过，Prefill 每次处理的都是新的token序列，所以是计算密集型。因此 GPU利用率很容易达到饱和。如下所示，对于一个A100上运行的 13B 的 LLM 来说，再Prefill阶段，无论请求长度多少，基本上batch size在16的时候就无法再提高吞吐量了。
 
 ![[different-batch-size.png]]
-<center>(a) Prefill phase  (b) Decoding phase <br>Throughput for two phases with different batch sizes
-and input lengths when serving an LLM with 13B parameters.</center>
+<center>(a) Prefill phase  (b) Decoding phase <br>在13B大小的模型上使用不同的Batch Size时不同阶段的吞吐表现</center>
+
 因此对于 Prefill，需要找出对于当前 LLM 能让 GPU 饱和的最小token数，论文中以 $L_m$ 表示。 当 $Batch Size * Input Length$ 达到该值后，再增加更大的Batch就没有意义了，只会增加TTFT时延。
 
 对于并行策略的影响，作者使用 M/D/1 来建模 Prefill 阶段执行和等待时长受 inter-op（一般指PP） 和 intra-op（一般指TP）并发的加速效果。
 
 ![[prefill-for-different-rate.png]]
-	<center>(a) Real experiment results (b) Changing intra-op speedup <br>Average TTFT when serving an LLM with 66B parameters using different parallelism on two A100 GPUs.</center>
+	<center>(a) Real experiment results (b) Changing intra-op speedup <br>在2张A100上使用不同的并行策略部署66B的模型时平均TTFT的表现</center>
+
 总的来说，在低请求速率下，intra-op 对于执行时长的减小可以有效减小 TTFT，而 inter-op 增大了系统的吞吐量，使得在高请求速率下可以线性地扩展系统。这里面主要 intra-op 带来地加速效果（图中的因子K）主要受到输入长度、模型架构、通讯带宽和放置（placement，指调度拓扑）的影响。
 ## 对 Decoding 实例的优化
 

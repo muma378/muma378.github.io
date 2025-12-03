@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/content/LLM 推理技术总结.md",
+                "file": "source/content/NVFP4 来了.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLM 推理技术总结"
+              "title": "NVFP4 来了"
             }
           },
           {
@@ -170,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/content/LLM 推理技术总结.md",
+                "file": "source/content/NVFP4 来了.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "LLM 推理技术总结 的大纲"
+              "title": "NVFP4 来了 的大纲"
             }
           },
           {
@@ -211,9 +211,9 @@
   },
   "active": "81508fb3cc9bc8c8",
   "lastOpenFiles": [
+    "source/content/LLM 推理技术总结.md",
     "source/content/深入理解KVCache.md",
     "source/content/index.md",
-    "source/content/LLM 推理技术总结.md",
     "source/content/NVFP4 来了.md",
     "source/content/images/nvfp4/nvfp4-symmetric-quantization.png",
     "source/content/images/nvfp4/nvfp4-quantization-granularity.png",

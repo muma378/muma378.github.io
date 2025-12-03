@@ -1,5 +1,5 @@
 ---
-title: 未命名
+title: NVFP4 来了
 tags:
   - attention
   - llm
@@ -13,7 +13,7 @@ NVFP4 是 Nvidia 随着 Blackwell 架构的GPU推出的一种新的量化格式�
 并且不可思议的是，在 NVIDIA 官方的精度基准测试中，将 DeepSeek-R1-0528 模型从 FP8 量化为 NVFP4 后，在七项评估任务中几乎没有性能下降[^1]：
 
 ![[nvfp4-deepseek-performance.png]]
-那么代价是什么呢，~~古尔丹~~
+那么代价是什么呢，~~古尔丹~~？
 # 缩放因子
 在开始介绍 NVFP4 之前我们需要先引入一个概念：**缩放因子** scaling factor。常规的量化就是把一个精度更高（例如 FP16）的数向下等比例缩放到一个低精度下（例如 FP8）的值。~~加入了技能的量化~~
 

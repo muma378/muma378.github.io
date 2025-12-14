@@ -22,17 +22,17 @@
             }
           },
           {
-            "id": "ad6e91da9496d0bc",
+            "id": "4514c75ed349eebd",
             "type": "leaf",
             "state": {
-              "type": "webviewer",
+              "type": "markdown",
               "state": {
-                "url": "https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/",
-                "title": "Introducing NVFP4 for Efficient and Accurate Low-Precision Inference | NVIDIA Technical Blog",
-                "mode": "webview"
+                "file": "source/content/3b1b 直观解释注意力机制笔记.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "globe-2",
-              "title": "Introducing NVFP4 for Efficient and Accurate Low-Precision Inference | NVIDIA Technical Blog"
+              "icon": "lucide-file",
+              "title": "3b1b 直观解释注意力机制笔记"
             }
           },
           {
@@ -41,15 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/content/LLM 推理技术总结.md",
+                "file": "source/content/llm-d.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLM 推理技术总结"
+              "title": "llm-d"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -170,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/content/NVFP4 来了.md",
+                "file": "source/content/llm-d.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "NVFP4 来了 的大纲"
+              "title": "llm-d 的大纲"
             }
           },
           {
@@ -209,12 +210,18 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "81508fb3cc9bc8c8",
+  "active": "8300a7df8af650d6",
   "lastOpenFiles": [
     "source/content/LLM 推理技术总结.md",
+    "source/content/3b1b 直观解释注意力机制笔记.md",
     "source/content/深入理解KVCache.md",
-    "source/content/index.md",
+    "source/content/llm-d.md",
+    "source/content/images/llm-d/llm-d-gie-architecture.png",
+    "source/content/images/llm-d/llm-d-epp.png",
+    "source/content/images/llm-d/llm-d-gie-personas.png",
+    "source/content/images/llm-d",
     "source/content/NVFP4 来了.md",
+    "source/content/index.md",
     "source/content/images/nvfp4/nvfp4-symmetric-quantization.png",
     "source/content/images/nvfp4/nvfp4-quantization-granularity.png",
     "source/content/images/nvfp4/nvfp4-deepseek-performance.png",
@@ -223,11 +230,7 @@
     "Pasted image 20250629092617.png",
     "Pasted image 20250628120554.png",
     "Pasted image 20250628120154.png",
-    "source/content/3b1b 直观解释注意力机制笔记.md",
     "source/content/程序内存调优面面观：从JVM到Kernel到Cloud.md",
-    "Pasted image 20250717103007.png",
-    "Pasted image 20250716125252.png",
-    "Pasted image 20250629153344.png",
     "source/content/images/kvcache/prefill-for-different-rate.png.crdownload",
     "source/content/images/kvcache/decode-for-different-parallel.png.crdownload",
     "source/content/images/kvcache/different-batch-size.png.crdownload",
@@ -238,7 +241,6 @@
     "templates/notebook.md",
     "templates",
     "source/content/images/transformer",
-    "source/content/images/artifacts",
     "source/content/tricks/在Github上运行Chart Museum.md",
     "source/content/读书/工人阶级子弟为何继承父业.md",
     "source/content/tricks/index.md",
@@ -254,7 +256,6 @@
     "_fit/source/content/index.md",
     "source/content/category-folder/index.md",
     "source/content/category-folder/Some note.md",
-    "_fit/source/docs/build.md",
-    "_fit/source/docs/authoring content.md"
+    "_fit/source/docs/build.md"
   ]
 }

@@ -111,7 +111,7 @@ GIE 没有给 Gateway API 加新的东西，而是增加了 InferencePool 及其
 在部署完上述所有组件之后我不禁思考，llm-d 为什么会是这样一种形态？我觉得原因有三个：
 1. 密涅瓦的猫头鹰在黄昏时起飞。现在依然是一个 AI技术快速更新和迭代的时期，无论推理引擎、大模型还是推理优化技术都在快速变化，在充满不确定之前，只有把产品做轻。事实也确实如此，从开始关注这个项目以来，整个架构包括代码仓库一直都在做很大的调整；
 2. 康威定理：设计系统的架构受制于产生这些设计的组织的沟通结构。llm-d 虽然是 RedHat 主导，但其实产生的过程和 [k8s 社区](https://www.kubernetes.dev/community/community-groups/) 的 SIG Network，WG AI Gateway，WG Batching 都有很多交流，很多人都是重叠的（例如  [Marcin Wielgus](https://github.com/mwielgus)，[Shane Utt](https://github.com/shaneutt) ，[Abdullah Gharaibeh](https://github.com/ahg-g)），所以倾向复用和组合现有技术，相反 Nvidia 的 Dynamo 基本就是推倒一切全部重来；
-3. 
+3. 软件的核心设计目标不是性能或易用，这一点在 ModelService 的Proposal和 GIE 的设计上都能看到。通过 Ext-Proc 的方式网关性能势必会差，但是有什么关系呢？相比于一个请求动辄几百ms~几十s的E2EL，请求在网关层耽误的几ms真的不值一提。使用Chart 的方式去部署大模型很难用，但是有什么关系呢？在硬件成本面前，模型部署就是成了一项手工业活动，没有高频率的CICD，而是一个团队围绕模型部署方案不断优化和打磨。这种背景下这么实现虽然难用，但是没有问题；
 
 这些思考又把我指向了一个答案：**llm-d 不是最终解决方案，在云原生上部署大模型还有长的路要走。**
 
